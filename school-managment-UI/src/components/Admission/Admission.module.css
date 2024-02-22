@@ -1,0 +1,25 @@
+.admission {
+  background-color: rgb(148, 146, 146);
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 50rem;
+  max-width: 95%;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+.admission button {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.8rem;
+  border: 1px solid teal;
+  background-color: teal;
+  color: white;
+  border-radius: 10px;
+  margin-right: 1rem;
+}
+
+.admission button:hover {
+  border: 1px solid rgb(1, 98, 98);
+  background-color: rgb(1, 98, 98);
+}

@@ -1,49 +1,71 @@
-import ButtonInput from "../../../UI/ButtonInput";
-import Input from "../../../UI/Input";
-import classes from "./Login.module.css";
-import { useState } from "react";
+import classes from "./SignUp.module.css";
 import { Form, Button, ButtonGroup, Card } from "react-bootstrap";
+import { useState } from "react";
+import Input from "../../UI/Input";
+import ButtonInput from "../../UI/ButtonInput";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import axios from "axios";
-import { setTokenId } from "../../../store/auth-actions";
-const Login = () => {
+const AdminSignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const history = useHistory();
-  const dispatch = useDispatch();
 
-  const switchAuthModeHandler = () => {
-    history.push("/student/register");
+  const updateName = (e) => {
+    setEnteredName(e.target.value);
   };
 
-  const signInHandler = async (e) => {
+  const updateEmail = (e) => {
+    setEnteredEmail(e.target.value);
+  };
+
+  const updatePassword = (e) => {
+    setEnteredPassword(e.target.value);
+  };
+
+  const switchAuthModeHandler = () => {
+    history.push("/admin");
+  };
+
+  const signUpHandler = async (e) => {
     e.preventDefault();
-    const loginData = {
+    const signupData = {
+      name: enteredName,
       email: enteredEmail,
       password: enteredPassword,
+      isAdmin: true,
     };
+
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:4000/user/login",
-        loginData
+        "http://localhost:4000/user/signup",
+        signupData
       );
       setIsLoading(false);
-      if (response) {
-        dispatch(setTokenId(response.data));
-        history.replace("/home");
-      }
+      history.push("/admin");
     } catch (err) {
       setIsLoading(false);
-      alert(err.response.data);
+      setEnteredEmail("");
+      if (err.response.data === "SequelizeUniqueConstraintError") {
+        alert("Email id already present");
+      }
     }
   };
   return (
     <Card className={classes.auth}>
-      <h1>Login</h1>
-      <Form onSubmit={signInHandler}>
+      <h1>Sign Up</h1>
+      <Form onSubmit={signUpHandler}>
+        <Input
+          grpClass={classes.control}
+          controlId="name"
+          label="Name"
+          type="text"
+          placeholder="Enter Name"
+          value={enteredName}
+          onChange={updateName}
+        />
         <Input
           grpClass={classes.control}
           controlId="email"
@@ -51,7 +73,7 @@ const Login = () => {
           type="email"
           placeholder="Enter Email"
           value={enteredEmail}
-          onChange={(e) => setEnteredEmail(e.target.value)}
+          onChange={updateEmail}
         />
         <Input
           grpClass={classes.control}
@@ -60,7 +82,7 @@ const Login = () => {
           type="password"
           placeholder="Enter Password"
           value={enteredPassword}
-          onChange={(e) => setEnteredPassword(e.target.value)}
+          onChange={updatePassword}
         />
         <ButtonGroup className={classes.actions} vertical>
           {isLoading && (
@@ -70,13 +92,19 @@ const Login = () => {
               name="Sending Request"
             />
           )}
-          {!isLoading && <ButtonInput type="submit" name="Login" />}
+          {!isLoading && (
+            <ButtonInput
+              variant="primary"
+              type="submit"
+              name="Create Account"
+            />
+          )}
           <Button
             className={classes.toggle}
             type="button"
             onClick={switchAuthModeHandler}
           >
-            Create new account
+            Login with existing account
           </Button>
         </ButtonGroup>
       </Form>
@@ -84,4 +112,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminSignUp;

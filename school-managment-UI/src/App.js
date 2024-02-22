@@ -8,6 +8,8 @@ import AdmissionForm from "./components/Admission/AdmissionForm";
 import AdmissionNotices from "./components/Admission/AdmissionNotices";
 import Login from "./components/Student/Auth/Login";
 import SignUp from "./components/Student/Auth/SignUp";
+import AdminLogin from "./components/Admin/AdminLogin";
+import AdminSignUp from "./components/Admin/AdminSignUp";
 
 const App = () => {
   return (
@@ -16,6 +18,12 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <HomePage />
+        </Route>
+        <Route path="/admin" exact>
+          <AdminLogin />
+        </Route>
+        <Route path="/admin/register">
+          <AdminSignUp />
         </Route>
         <Route path="/procedure">
           <AdmissionProc />

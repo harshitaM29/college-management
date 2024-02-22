@@ -2,9 +2,10 @@ const Users = require("../models/users");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sequelize = require("../utils/database");
+require("dotenv").config();
 
 const generateWebToken = (id, isPremium) => {
-  return jwt.sign({ userId: id, isPremium }, "secretkeyforexpensetracker");
+  return jwt.sign({ userId: id, isPremium }, process.env.SECRET_KEY);
 };
 
 exports.postUserData = async (req, res, next) => {
@@ -28,6 +29,7 @@ exports.postUserData = async (req, res, next) => {
     return res.status(201).json(userData);
   } catch (err) {
     await t.rollback();
+    console.log(err);
     return res.status(400).json(err.name);
   }
 };
@@ -49,14 +51,12 @@ exports.postLoginUserData = async (req, res, next) => {
     const presentPass = await bcrypt.compare(password, user.password);
 
     if (presentPass) {
-      res
-        .status(200)
-        .json({
-          email: email,
-          password: password,
-          isAdmin: user.isAdmin,
-          token: generateWebToken(user.id, false),
-        });
+      res.status(200).json({
+        email: email,
+        password: password,
+        isAdmin: user.isAdmin,
+        token: generateWebToken(user.id, false),
+      });
       await t.commit();
     } else {
       await t.rollback();
