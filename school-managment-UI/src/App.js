@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import HomePage from "./pages/HomePage";
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
-import Header from "./components/Layout/Header";
+import Navigation from "./pages/Navigation";
 import Footer from "./components/Layout/Footer";
 import AdmissionProc from "./components/Admission/AdmissionProc";
 import AdmissionForm from "./components/Admission/AdmissionForm";
@@ -10,11 +10,12 @@ import Login from "./components/Student/Auth/Login";
 import SignUp from "./components/Student/Auth/SignUp";
 import AdminLogin from "./components/Admin/AdminLogin";
 import AdminSignUp from "./components/Admin/AdminSignUp";
+import Home from "./components/Student/Home";
 
 const App = () => {
   return (
     <Fragment>
-      <Header />
+      <Navigation />
       <Switch>
         <Route path="/" exact>
           <HomePage />
@@ -39,6 +40,9 @@ const App = () => {
         </Route>
         <Route path="/student/register">
           <SignUp />
+        </Route>
+        <Route path="student/home">
+          <Home />
         </Route>
       </Switch>
       <Footer />
