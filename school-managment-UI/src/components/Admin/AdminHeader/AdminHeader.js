@@ -2,12 +2,11 @@ import React, { Fragment } from "react";
 import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { authActions } from "../../../store/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-const StudentHeader = () => {
+const AdminHeader = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-
   const handleLogout = () => {
     dispatch(authActions.logout());
     setTimeout(() => {
@@ -24,7 +23,7 @@ const StudentHeader = () => {
         data-bs-theme="dark"
       >
         <Container>
-          <Navbar.Brand href="#home">Student Dashboard</Navbar.Brand>
+          <Navbar.Brand href="#home">Admin Dashboard</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -39,10 +38,10 @@ const StudentHeader = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <NavLink
-                    to="/form"
+                    to="/admin/status"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
-                    Online Application
+                    Online Application Status
                   </NavLink>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
@@ -178,4 +177,4 @@ const StudentHeader = () => {
   );
 };
 
-export default StudentHeader;
+export default AdminHeader;

@@ -4,23 +4,55 @@ import classes from "./Login.module.css";
 import { useState } from "react";
 import { Form, Button, ButtonGroup, Card } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { setTokenId } from "../../store/auth-actions";
+
 const AdminLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
+  const dispatch = useDispatch();
 
   const switchAuthModeHandler = () => {
     history.push("/admin/register");
   };
+
+  const signInHandler = async (e) => {
+    e.preventDefault();
+    const loginData = {
+      email: enteredEmail,
+      password: enteredPassword,
+    };
+    setIsLoading(true);
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/user/login",
+        loginData
+      );
+      setIsLoading(false);
+      if (response) {
+        dispatch(setTokenId(response.data));
+        history.replace("admin/home");
+      }
+    } catch (err) {
+      setIsLoading(false);
+      alert(err.response.data);
+    }
+  };
   return (
     <Card className={classes.auth}>
       <h1>Login</h1>
-      <Form>
+      <Form onSubmit={signInHandler}>
         <Input
           grpClass={classes.control}
           controlId="email"
           label="Email Address"
           type="email"
           placeholder="Enter Email"
+          value={enteredEmail}
+          onChange={(e) => setEnteredEmail(e.target.value)}
         />
         <Input
           grpClass={classes.control}
@@ -28,6 +60,8 @@ const AdminLogin = () => {
           label="Password"
           type="password"
           placeholder="Enter Password"
+          value={enteredPassword}
+          onChange={(e) => setEnteredPassword(e.target.value)}
         />
         <ButtonGroup className={classes.actions} vertical>
           {isLoading && (

@@ -6,6 +6,9 @@ const studentSlice = createSlice({
   name: "student",
   initialState: initialStudentState,
   reducers: {
+    replaceExpense(state, action) {
+      state.formData = action.payload;
+    },
     addStudentForm(state, action) {
       state.formData.push({
         ...action.payload,

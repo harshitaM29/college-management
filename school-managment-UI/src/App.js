@@ -1,6 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import HomePage from "./pages/HomePage";
-import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
+import { Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Navigation from "./pages/Navigation";
 import Footer from "./components/Layout/Footer";
 import AdmissionProc from "./components/Admission/AdmissionProc";
@@ -11,8 +12,24 @@ import SignUp from "./components/Student/Auth/SignUp";
 import AdminLogin from "./components/Admin/AdminLogin";
 import AdminSignUp from "./components/Admin/AdminSignUp";
 import Home from "./components/Student/Home";
+import AdminHome from "./components/Admin/AdminHome";
+import OnlineApplication from "./components/Admin/OnlineApplication/OnlineApplication";
+import { getData } from "./store/student-actions";
+import Admission from "./pages/Admission";
 
 const App = () => {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    setTimeout(() => {
+      if (isLoggedIn) {
+        dispatch(getData(token));
+      }
+    }, 1000);
+  }, [dispatch]);
   return (
     <Fragment>
       <Navigation />
@@ -30,7 +47,7 @@ const App = () => {
           <AdmissionProc />
         </Route>
         <Route path="/form">
-          <AdmissionForm />
+          <Admission />
         </Route>
         <Route path="/notice">
           <AdmissionNotices />
@@ -43,6 +60,12 @@ const App = () => {
         </Route>
         <Route path="student/home">
           <Home />
+        </Route>
+        <Route path="admin/home">
+          <AdminHome />
+        </Route>
+        <Route path="/admin/status">
+          <OnlineApplication />
         </Route>
       </Switch>
       <Footer />

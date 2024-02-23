@@ -18,7 +18,7 @@ const StudentForm = sequelize.define("studentform", {
     allowNull: false,
   },
   dob: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     allowNull: false,
   },
   address: {

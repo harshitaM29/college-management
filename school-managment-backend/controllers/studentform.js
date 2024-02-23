@@ -1,10 +1,20 @@
 const StudentForm = require("../models/studentform");
 const TrackStatus = require("../models/trackstatus");
-const sequelize = require("../utils/database");
+exports.getData = async (req, res) => {
+  try {
+    const application = await StudentForm.findAll({
+      include: { model: TrackStatus },
+      attributes: { exclude: ["createdAt", "updatedAt"] },
+    });
+
+    res.status(200).json(application);
+  } catch (err) {
+    console.log(err);
+    res.status(401).send(err);
+  }
+};
 
 exports.postFormData = async (req, res, next) => {
-  const t = await sequelize.transaction();
-  const user = req.user.id;
   const name = req.body.name;
   const email = req.body.email;
   const dob = req.body.dob;
@@ -23,18 +33,28 @@ exports.postFormData = async (req, res, next) => {
       ssc: ssc,
       hsc: hsc,
       course: course,
+      userId: req.user.id,
     });
-    const status = await TrackStatus.create(
-      {
-        isFormSubmitted: true,
-        status: "Pending",
-      },
-      { transaction: t }
-    );
-    await t.commit();
-    res.status(201).json(formData, status);
+    const status = await TrackStatus.create({
+      isFormSubmitted: true,
+      status: "Pending",
+      userId: req.user.id,
+      studentformId: formData.id,
+    });
+
+    res.status(200).json(formData, status);
   } catch (err) {
-    await t.rollback();
     throw new Error(err);
   }
+};
+
+exports.changeStatus = async (req, res) => {
+  await TrackStatus.update(
+    { status: req.body.status },
+    {
+      where: {
+        studentformId: req.body.studentformId,
+      },
+    }
+  );
 };

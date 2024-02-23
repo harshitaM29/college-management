@@ -13,10 +13,10 @@ app.use(cors());
 app.use(bodyParser.json({ extended: false }));
 app.use("/user", userRoutes);
 app.use("/student", studentRoutes);
-User.belongsTo(StudentForm);
 StudentForm.belongsTo(User);
 TrackStatus.belongsTo(User);
-User.belongsTo(TrackStatus);
+StudentForm.hasOne(TrackStatus);
+TrackStatus.belongsTo(StudentForm);
 sequelize
   .sync()
   .then((res) => {
