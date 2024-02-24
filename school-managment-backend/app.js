@@ -13,7 +13,10 @@ const eventRoutes = require("./routes/Event/event");
 const Event = require("./models/Events/events");
 const EventGallery = require("./models/Events/eventgallery");
 const EventRegistration = require("./models/Events/eventRegistration");
+const Attendance = require("./models/Student/Attendance");
+const Grade = require("./models/Student/Grade");
 const newsRoutes = require("./routes/News/news");
+const studentDashboardRoutes = require("./routes/Student/student");
 
 app.use(cors());
 app.use(bodyParser.json({ extended: false }));
@@ -23,6 +26,7 @@ app.use("/student", studentRoutes);
 app.use("/admission", admissionNoticeRoutes);
 app.use(eventRoutes);
 app.use(newsRoutes);
+app.use(studentDashboardRoutes);
 
 StudentForm.belongsTo(User);
 TrackStatus.belongsTo(User);
@@ -32,6 +36,10 @@ Event.hasMany(EventGallery);
 EventGallery.belongsTo(Event);
 Event.hasMany(EventRegistration);
 EventRegistration.belongsTo(Event);
+User.hasMany(Attendance);
+Attendance.belongsTo(User);
+User.hasMany(Grade);
+Grade.belongsTo(User);
 sequelize
   .sync()
   .then((res) => {
