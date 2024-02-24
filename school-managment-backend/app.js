@@ -13,6 +13,7 @@ const eventRoutes = require("./routes/Event/event");
 const Event = require("./models/Events/events");
 const EventGallery = require("./models/Events/eventgallery");
 const EventRegistration = require("./models/Events/eventRegistration");
+const newsRoutes = require("./routes/News/news");
 
 app.use(cors());
 app.use(bodyParser.json({ extended: false }));
@@ -21,6 +22,7 @@ app.use("/user", userRoutes);
 app.use("/student", studentRoutes);
 app.use("/admission", admissionNoticeRoutes);
 app.use(eventRoutes);
+app.use(newsRoutes);
 
 StudentForm.belongsTo(User);
 TrackStatus.belongsTo(User);
