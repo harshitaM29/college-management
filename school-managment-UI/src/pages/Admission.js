@@ -5,8 +5,10 @@ import TrackStatus from "../components/Student/Track/TrackStatus";
 
 const Admission = () => {
   const data = useSelector((state) => state.student.formData);
-  const isSubmitted = data.map((item) => item.trackstatus.isFormSubmitted);
-
+  let isSubmitted = data.map((item) => item.trackstatus.isFormSubmitted);
+  if (isSubmitted.length === 0) {
+    isSubmitted = false;
+  }
   return (
     <Fragment>{!isSubmitted ? <AdmissionForm /> : <TrackStatus />}</Fragment>
   );

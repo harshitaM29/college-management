@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const userAuthentication = require("../middlewares/authenticate");
+const userAuthentication = require("../../middlewares/authenticate");
 
-const studentFormController = require("../controllers/studentform");
+const studentFormController = require("../../controllers/Admission/studentform");
 
 router.get(
   "/getData",

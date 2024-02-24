@@ -1,5 +1,5 @@
-const StudentForm = require("../models/studentform");
-const TrackStatus = require("../models/trackstatus");
+const StudentForm = require("../../models/Admission/studentform");
+const TrackStatus = require("../../models/Admission/trackstatus");
 exports.getData = async (req, res) => {
   try {
     const application = await StudentForm.findAll({

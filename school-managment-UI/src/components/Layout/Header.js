@@ -27,10 +27,10 @@ const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <NavLink
-                    to="/admin/status"
+                    to="/form"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
-                    Online Application Status
+                    Online Application
                   </NavLink>
                 </NavDropdown.Item>
                 <NavDropdown.Item>

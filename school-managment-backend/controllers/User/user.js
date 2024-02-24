@@ -1,7 +1,7 @@
-const Users = require("../models/users");
+const Users = require("../../models/User/users");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const sequelize = require("../utils/database");
+const sequelize = require("../../utils/database");
 require("dotenv").config();
 
 const generateWebToken = (id, isPremium) => {

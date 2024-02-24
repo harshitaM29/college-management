@@ -1,11 +1,10 @@
 import React, { Fragment, useEffect } from "react";
 import HomePage from "./pages/HomePage";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Navigation from "./pages/Navigation";
 import Footer from "./components/Layout/Footer";
 import AdmissionProc from "./components/Admission/AdmissionProc";
-import AdmissionForm from "./components/Admission/AdmissionForm";
 import AdmissionNotices from "./components/Admission/AdmissionNotices";
 import Login from "./components/Student/Auth/Login";
 import SignUp from "./components/Student/Auth/SignUp";
@@ -47,7 +46,8 @@ const App = () => {
           <AdmissionProc />
         </Route>
         <Route path="/form">
-          <Admission />
+          {isLoggedIn && <Admission />}
+          {!isLoggedIn && <Redirect to="/student/login" />}
         </Route>
         <Route path="/notice">
           <AdmissionNotices />
