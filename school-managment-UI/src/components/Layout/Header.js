@@ -12,7 +12,7 @@ const Header = () => {
         data-bs-theme="dark"
       >
         <Container>
-          <Navbar.Brand href="#home">ABC College</Navbar.Brand>
+          <Navbar.Brand>ABC College</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -27,10 +27,10 @@ const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <NavLink
-                    to="/form"
+                    to="/admin/status"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
-                    Online Application
+                    Online Application Status
                   </NavLink>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
@@ -42,10 +42,117 @@ const Header = () => {
                   </NavLink>
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#link">Events</Nav.Link>
+              <NavDropdown title="Academics">
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/procedure"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Academic Calendar
+                  </NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/form"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Syllabus
+                  </NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/notice"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Results and Grades
+                  </NavLink>
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Events">
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/procedure"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Event Calendar
+                  </NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/form"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Event Registration
+                  </NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/notice"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Event Galleries
+                  </NavLink>
+                </NavDropdown.Item>
+              </NavDropdown>
               <Nav.Link href="#link">News</Nav.Link>
-              <Nav.Link href="#link">Contact Us</Nav.Link>
-              <Navbar.Text style={{ marginLeft: "50rem" }}>
+              <NavDropdown title="Library">
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/procedure"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Library Catalog
+                  </NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/form"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Digital Library
+                  </NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/notice"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Library Services
+                  </NavLink>
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Career Services">
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/procedure"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Job Board
+                  </NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/form"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Career Counselling
+                  </NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/notice"
+                    style={{ textDecoration: "none", color: "#DEE2E6" }}
+                  >
+                    Employer Engagement
+                  </NavLink>
+                </NavDropdown.Item>
+              </NavDropdown>
+
+              <Navbar.Text
+                style={{
+                  marginLeft: "35rem",
+                }}
+              >
                 <NavLink
                   to="/student/login"
                   style={{ textDecoration: "none", color: "#DEE2E6" }}

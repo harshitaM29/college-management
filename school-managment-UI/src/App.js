@@ -58,10 +58,10 @@ const App = () => {
         <Route path="/student/register">
           <SignUp />
         </Route>
-        <Route path="student/home">
+        <Route path="/student/home">
           <Home />
         </Route>
-        <Route path="admin/home">
+        <Route path="/admin/home">
           <AdminHome />
         </Route>
         <Route path="/admin/status">

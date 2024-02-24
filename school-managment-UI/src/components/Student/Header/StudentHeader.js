@@ -10,9 +10,8 @@ const StudentHeader = () => {
 
   const handleLogout = () => {
     dispatch(authActions.logout());
-    setTimeout(() => {
-      history.replace("/");
-    }, 10);
+
+    history.replace("/");
     window.location.reload();
   };
   return (
@@ -24,7 +23,7 @@ const StudentHeader = () => {
         data-bs-theme="dark"
       >
         <Container>
-          <Navbar.Brand href="#home">Student Dashboard</Navbar.Brand>
+          <Navbar.Brand>Student Dashboard</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">

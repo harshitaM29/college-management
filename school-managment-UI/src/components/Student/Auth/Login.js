@@ -33,7 +33,7 @@ const Login = () => {
       setIsLoading(false);
       if (response) {
         dispatch(setTokenId(response.data));
-        history.replace("student/home");
+        history.replace("/student/home");
       }
     } catch (err) {
       setIsLoading(false);

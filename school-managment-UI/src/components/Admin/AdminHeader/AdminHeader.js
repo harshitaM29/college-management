@@ -9,9 +9,9 @@ const AdminHeader = () => {
   const history = useHistory();
   const handleLogout = () => {
     dispatch(authActions.logout());
-    setTimeout(() => {
-      history.replace("/");
-    }, 10);
+
+    history.replace("/");
+
     window.location.reload();
   };
   return (
