@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 const sequelize = require("../../utils/database");
 require("dotenv").config();
 
-const generateWebToken = (id, isPremium) => {
-  return jwt.sign({ userId: id, isPremium }, process.env.SECRET_KEY);
+const generateWebToken = (id) => {
+  return jwt.sign({ userId: id }, process.env.SECRET_KEY);
 };
 
 exports.postUserData = async (req, res, next) => {
@@ -54,7 +54,7 @@ exports.postLoginUserData = async (req, res, next) => {
         email: email,
         password: password,
         isAdmin: user.isAdmin,
-        token: generateWebToken(user.id, false),
+        token: generateWebToken(user.id),
       });
       await t.commit();
     } else {
