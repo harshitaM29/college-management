@@ -1,5 +1,7 @@
 const StudentForm = require("../../models/Admission/studentform");
 const TrackStatus = require("../../models/Admission/trackstatus");
+
+//controller to get all application
 exports.getData = async (req, res) => {
   try {
     const application = await StudentForm.findAll({
@@ -14,6 +16,7 @@ exports.getData = async (req, res) => {
   }
 };
 
+//controller to fill application form
 exports.postFormData = async (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
@@ -48,6 +51,7 @@ exports.postFormData = async (req, res, next) => {
   }
 };
 
+//controller to change application status
 exports.changeStatus = async (req, res) => {
   await TrackStatus.update(
     { status: req.body.status },

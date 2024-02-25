@@ -1,5 +1,6 @@
 const AdmissionNotice = require("../../models/Admission/admissionnotice");
 
+//controller get admission notices
 exports.getAdmissionNotices = async (req, res) => {
   try {
     const notices = await AdmissionNotice.findAll();
