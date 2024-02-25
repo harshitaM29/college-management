@@ -45,7 +45,7 @@ const Header = () => {
               <NavDropdown title="Academics">
                 <NavDropdown.Item>
                   <NavLink
-                    to="/procedure"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Academic Calendar
@@ -53,7 +53,7 @@ const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <NavLink
-                    to="/form"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Syllabus
@@ -61,7 +61,7 @@ const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <NavLink
-                    to="/notice"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Results and Grades
@@ -71,7 +71,7 @@ const Header = () => {
               <NavDropdown title="Events">
                 <NavDropdown.Item>
                   <NavLink
-                    to="/procedure"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Event Calendar
@@ -79,7 +79,7 @@ const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <NavLink
-                    to="/form"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Event Registration
@@ -87,18 +87,25 @@ const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <NavLink
-                    to="/notice"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Event Galleries
                   </NavLink>
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#link">News</Nav.Link>
+              <Nav.Link>
+                <NavLink
+                  to="/sample"
+                  style={{ textDecoration: "none", color: "#DEE2E6" }}
+                >
+                  News
+                </NavLink>
+              </Nav.Link>
               <NavDropdown title="Library">
                 <NavDropdown.Item>
                   <NavLink
-                    to="/procedure"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Library Catalog
@@ -106,7 +113,7 @@ const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <NavLink
-                    to="/form"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Digital Library
@@ -114,7 +121,7 @@ const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <NavLink
-                    to="/notice"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Library Services
@@ -124,7 +131,7 @@ const Header = () => {
               <NavDropdown title="Career Services">
                 <NavDropdown.Item>
                   <NavLink
-                    to="/procedure"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Job Board
@@ -132,7 +139,7 @@ const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <NavLink
-                    to="/form"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Career Counselling
@@ -140,7 +147,7 @@ const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <NavLink
-                    to="/notice"
+                    to="/sample"
                     style={{ textDecoration: "none", color: "#DEE2E6" }}
                   >
                     Employer Engagement

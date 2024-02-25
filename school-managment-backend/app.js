@@ -17,6 +17,7 @@ const Attendance = require("./models/Student/Attendance");
 const Grade = require("./models/Student/Grade");
 const newsRoutes = require("./routes/News/news");
 const studentDashboardRoutes = require("./routes/Student/student");
+const contactRoutes = require("./routes/ContactUs/contactus");
 
 app.use(cors());
 app.use(bodyParser.json({ extended: false }));
@@ -27,6 +28,7 @@ app.use("/admission", admissionNoticeRoutes);
 app.use(eventRoutes);
 app.use(newsRoutes);
 app.use(studentDashboardRoutes);
+app.use(contactRoutes);
 
 StudentForm.belongsTo(User);
 TrackStatus.belongsTo(User);
@@ -40,6 +42,7 @@ User.hasMany(Attendance);
 Attendance.belongsTo(User);
 User.hasMany(Grade);
 Grade.belongsTo(User);
+
 sequelize
   .sync()
   .then((res) => {

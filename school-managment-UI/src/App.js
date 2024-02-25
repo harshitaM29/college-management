@@ -15,6 +15,7 @@ import AdminHome from "./components/Admin/AdminHome";
 import OnlineApplication from "./components/Admin/OnlineApplication/OnlineApplication";
 import { getData } from "./store/student-actions";
 import Admission from "./pages/Admission";
+import Sample from "./components/Sample";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -66,6 +67,9 @@ const App = () => {
         </Route>
         <Route path="/admin/status">
           <OnlineApplication />
+        </Route>
+        <Route path="/sample">
+          <Sample />
         </Route>
       </Switch>
       <Footer />
