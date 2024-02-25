@@ -29,7 +29,6 @@ exports.postUserData = async (req, res, next) => {
     return res.status(201).json(userData);
   } catch (err) {
     await t.rollback();
-    console.log(err);
     return res.status(400).json(err.name);
   }
 };

@@ -10,7 +10,6 @@ const Navigation = () => {
 
   const isStudent = isAdmin === "false" && isLoggedIn;
   const isAdminLogged = isAdmin === "true" && isLoggedIn;
-  console.log(isStudent);
   return (
     <Fragment>
       {isStudent ? (

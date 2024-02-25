@@ -11,7 +11,6 @@ exports.getData = async (req, res) => {
 
     res.status(200).json(application);
   } catch (err) {
-    console.log(err);
     res.status(401).send(err);
   }
 };
@@ -45,7 +44,7 @@ exports.postFormData = async (req, res, next) => {
       studentformId: formData.id,
     });
 
-    res.status(200).json(formData, status);
+    res.status(200).json({ formData, trackstatus: status });
   } catch (err) {
     throw new Error(err);
   }
