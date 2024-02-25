@@ -18,6 +18,7 @@ const Grade = require("./models/Student/Grade");
 const newsRoutes = require("./routes/News/news");
 const studentDashboardRoutes = require("./routes/Student/student");
 const contactRoutes = require("./routes/ContactUs/contactus");
+const libraryRoutes = require("./routes/Library/library");
 
 app.use(cors());
 app.use(bodyParser.json({ extended: false }));
@@ -29,6 +30,7 @@ app.use(eventRoutes);
 app.use(newsRoutes);
 app.use(studentDashboardRoutes);
 app.use(contactRoutes);
+app.use("/library", libraryRoutes);
 
 StudentForm.belongsTo(User);
 TrackStatus.belongsTo(User);
