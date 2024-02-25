@@ -20,6 +20,7 @@ const studentDashboardRoutes = require("./routes/Student/student");
 const contactRoutes = require("./routes/ContactUs/contactus");
 const libraryRoutes = require("./routes/Library/library");
 const careerRoutes = require("./routes/CareerServices/careerservices");
+const alumniRoutes = require("./routes/Alumni/alumni");
 
 app.use(cors());
 app.use(bodyParser.json({ extended: false }));
@@ -33,6 +34,7 @@ app.use(studentDashboardRoutes);
 app.use(contactRoutes);
 app.use("/library", libraryRoutes);
 app.use("/career", careerRoutes);
+app.use("/alumni", alumniRoutes);
 
 StudentForm.belongsTo(User);
 TrackStatus.belongsTo(User);
